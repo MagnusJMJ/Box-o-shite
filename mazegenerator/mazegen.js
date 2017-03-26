@@ -15,8 +15,8 @@ function drawMaze() {
   background(94, 107, 181);
   for (x = 0; x < width/res; x++) {
     for (y = 0; y < height/res; y++) {
-      var diceroll = round(random());
-      if (diceroll) {
+      var coinflip = round(random());
+      if (coinflip) {
         line(x*res, y*res, (x*res)+res, (y*res)+res);
       } else {
         line((x*res)+res, y*res, x*res, (y*res)+res);
