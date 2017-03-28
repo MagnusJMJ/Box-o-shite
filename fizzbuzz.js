@@ -1,5 +1,5 @@
 for (i = 1; i < 101; i++) {
-  var fb = '';
+  var fb;
   if (i % 3 == 0) {
     fb += 'Fizz';
   }
@@ -9,6 +9,6 @@ for (i = 1; i < 101; i++) {
   if (fb == '') {
     console.log(i);
   } else {
-    console.log(fb);
+    console.log(fb || i);
   }
 }
