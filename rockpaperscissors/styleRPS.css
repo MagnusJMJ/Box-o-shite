@@ -1,0 +1,15 @@
+body {
+  background-color: DarkSlateGray;
+}
+
+input {
+  opacity: 1;
+  transform: scale(0.5, 0.5);
+  transition: opacity .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+}
+
+input:hover {
+  opacity: 0.5;
+  transform: scale(0.55, 0.55);
+}
