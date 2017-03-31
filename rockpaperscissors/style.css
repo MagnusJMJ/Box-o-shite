@@ -16,6 +16,7 @@
 
 #throbber {
   display: none;
+  margin-top: 40vh;
   transform: scale(.3, .3);
 }
 
@@ -31,12 +32,9 @@ body {
 }
 
 h1 {
-  margin-top: 100px;
+  margin-top: 30vh;
+  margin-bottom: -30px;
   font-size: 48px;
-}
-
-p {
-  font-size: 24;
 }
 
 input {
@@ -50,11 +48,14 @@ input:hover {
 }
 
 #retryButton {
+  font-size: 32;
+  margin-bottom: -30px;
   transition: color .25s;
 }
 
 #retryButton:hover {
   color: SlateGray;
+  cursor: pointer;
 }
 
 img {
