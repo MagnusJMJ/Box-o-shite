@@ -1,8 +1,8 @@
-*{
+* {
   font-family: Open Sans, Helvetica, sans-serif;
   text-align: center;
-  animation: fadein .5s;
   color: White;
+  animation: fadein .5s;
 }
 
 @keyframes fadein {
@@ -10,25 +10,18 @@
   to   { opacity: 1; }
 }
 
-#paper {
-  margin-right: -150px;
-  margin-left: -150px;
+#resolvedState {
+  display: none;
 }
 
 #throbber {
   display: none;
-  margin-top: 200px;
   transform: scale(.3, .3);
 }
 
-#button {
-  display: none;
-  background: DarkSlateGray;
-  transition: background .25s ease-in-out;
-}
-
-#button:hover {
-  background: Black;
+#paper {
+  margin-right: -150px;
+  margin-left: -150px;
 }
 
 body {
@@ -38,18 +31,32 @@ body {
 }
 
 h1 {
-  margin: 50px;
-  font-size: 48;
+  margin-top: 100px;
+  font-size: 48px;
+}
+
+p {
+  font-size: 24;
 }
 
 input {
-  display: inline-block;
-  opacity: 1;
-  transition: opacity .25s, transform .25s;
+  opacity: .75;
   transform: scale(.3, .3);
+  transition: opacity .25s, transform .25s;
+}
+input:hover {
+  opacity: 1;
+  transform: scale(.33, .33);
 }
 
-input:hover {
-  opacity: .75;
-  transform: scale(.33, .33);
+#retryButton {
+  transition: color .25s;
+}
+
+#retryButton:hover {
+  color: SlateGray;
+}
+
+img {
+  transform: scale(.5, .5);
 }

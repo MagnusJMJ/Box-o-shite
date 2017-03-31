@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <h1 id="header" class="init"> Choose your weapon. </h1>
-    <input id="rock"     class="init" type="image" src="assets/rock.png"     />
-    <input id="paper"    class="init" type="image" src="assets/paper.png"    />
-    <input id="scissors" class="init" type="image" src="assets/scissors.png" />
-    <img id="throbber" src="assets/throbber.gif">
-    <button id="button"> Try again? </button>
+    <div id="initialState">
+      <h1 class="initialState"> Choose your weapon. </h1>
+      <input id="rock" class="initialState" type="image" src="assets/rock.png"/>
+      <input id="paper" class="initialState" type="image" src="assets/paper.png"/>
+      <input id="scissors" class="initialState" type="image" src="assets/scissors.png"/>
+    </div>
+
+    <img id="throbber" src="assets/throbber.gif"/>
+
+    <div id="resolvedState">
+      <h1 id="resolvedHeader" class="resolvedState"> default </h1>
+      <p class="resolvedState"> You chose: </p>
+      <p class="resolvedState"> They chose: </p>
+      <p id="retryButton" class="resolvedState"> Try again? </p>
+      <img id="myChoice" class="resolvedState" src=""/>
+      <img id="oppChoice" class="resolvedState" src=""/>
+    </div>
   </body>
 </html>
 
-<!-- external resources -->
-<link rel="stylesheet" type="text/css" href="styleRPS.css" />
+<!-- external script and stylesheet -->
+<link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="rps.js" ></script>
