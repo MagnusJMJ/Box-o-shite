@@ -1,16 +1,18 @@
 <html>
-<head>
-  <title> Rock, Paper, Scissors </title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="stylerps.css">
-  <!-- libraries -->
-  <script language="javascript" src="libraries/p5.js"></script>
-  <script language="javascript" src="libraries/p5.dom.js"></script>
-  <script language="javascript" src="libraries/p5.sound.js"></script>
-  <script language="javascript" src="libraries/rita.js"></script>
-  <script language="javascript" src="libraries/jquery.js"></script>
-  <!-- sketch source code -->
-  <script language="javascript" src="rockpaperscissors.js"></script>
-  <style> body {padding: 0; margin: 0;} </style>
-</head>
+  <head>
+    <title> Rock, Paper, Scissors </title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1 id="header" class="init"> Choose your weapon. </h1>
+    <input id="rock"     class="init" type="image" src="assets/rock.png"     />
+    <input id="paper"    class="init" type="image" src="assets/paper.png"    />
+    <input id="scissors" class="init" type="image" src="assets/scissors.png" />
+    <img id="throbber" src="assets/throbber.gif">
+    <button id="button"> Try again? </button>
+  </body>
 </html>
+
+<!-- external resources -->
+<link rel="stylesheet" type="text/css" href="styleRPS.css" />
+<script type="text/javascript" src="rps.js" ></script>
