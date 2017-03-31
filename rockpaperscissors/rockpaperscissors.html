@@ -1,0 +1,167 @@
+<!-- NOTE: Single-file version of RPS! (except assets, obviously) -->
+
+<html>
+  <head>
+    <title> Rock, Paper, Scissors </title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <div id="initialState">
+      <h1> Choose your weapon. </h1>
+      <input id="rock" type="image" src="assets/rock.png"/>
+      <input id="paper" type="image" src="assets/paper.png"/>
+      <input id="scissors" type="image" src="assets/scissors.png"/>
+    </div>
+    <img id="throbber" src="assets/throbber.gif"/>
+    <div id="resolvedState">
+      <h1 id="resolvedHeader"> default </h1>
+      <p id="retryButton"> Try again? </p>
+      <img id="myChoice" src=""/>
+      <img id="oppChoice" src=""/>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    font-family: Open Sans, Helvetica, sans-serif;
+    text-align: center;
+    color: White;
+    animation: fadein .5s;
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  #resolvedState {
+    display: none;
+  }
+  #throbber {
+    display: none;
+    margin-top: 40vh;
+    transform: scale(.3, .3);
+  }
+  #paper {
+    margin-right: -150px;
+    margin-left: -150px;
+  }
+  body {
+    background-color: DarkSlateGray;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    margin-top: 30vh;
+    margin-bottom: -30px;
+    font-size: 48px;
+  }
+  input {
+    opacity: .75;
+    transform: scale(.3, .3);
+    transition: opacity .25s, transform .25s;
+  }
+  input:hover {
+    opacity: 1;
+    transform: scale(.33, .33);
+  }
+  #retryButton {
+    font-size: 32;
+    margin-bottom: -30px;
+    transition: color .25s;
+  }
+  #retryButton:hover {
+    color: SlateGray;
+    cursor: pointer;
+  }
+  img {
+    transform: scale(.5, .5);
+  }
+</style>
+<script type="text/javascript">
+  var myChoice,
+      oppChoice,
+      result,
+      initial  = document.getElementById('initialState'),
+      rock     = document.getElementById('rock'),
+      paper    = document.getElementById('paper'),
+      scissors = document.getElementById('scissors'),
+      resolved = document.getElementById('resolvedState'),
+      retry    = document.getElementById('retryButton'),
+      throbber = document.getElementById('throbber');
+  rock.addEventListener('click', choseRock);
+  paper.addEventListener('click', chosePaper);
+  scissors.addEventListener('click', choseScissors);
+  retry.addEventListener('click', tryAgain);
+  function choseRock() {
+    console.log('You chose rock.');
+    myChoice = 0;
+    startGame();
+  }
+  function chosePaper() {
+    console.log('You chose paper.');
+    myChoice = 1;
+    startGame();
+  }
+  function choseScissors() {
+    console.log('You chose scissors.');
+    myChoice = 2;
+    startGame();
+  }
+  function startGame() {
+    initial.style.display  = 'none';
+    throbber.style.display = 'inline-block';
+    var wait = 1000 + Math.random() * 1000
+    setTimeout(resolve, wait);
+  }
+  function resolve() {
+    oppChoice = Math.round(Math.random() * 2);
+    var oc = ['rock.', 'paper.', 'scissors.'];
+    console.log('Opponent chose ' + oc[oppChoice]);
+    if (myChoice == oppChoice) {
+      console.log('You tied!');
+      result = 2;
+    } else if (myChoice == oppChoice + 1 || myChoice == oppChoice - 2) {
+      console.log('You won!');
+      result = 1;
+    } else {
+      console.log('You lost!');
+      result = 0;
+    }
+    showResult();
+  }
+    function showResult() {
+    var header  = document.getElementById('resolvedHeader'),
+        myHand  = document.getElementById('myChoice'),
+        oppHand = document.getElementById('oppChoice');
+    switch (result) {
+      case 0:
+        header.innerHTML   = 'You lost!';
+        header.style.color = 'crimson';
+        break;
+      case 1:
+        header.innerHTML   = 'You won!';
+        header.style.color = 'YellowGreen';
+        break;
+      case 2:
+        header.innerHTML   = 'You tied!';
+        header.style.color = 'White';
+        break;
+    }
+    switch (myChoice) {
+      case 0: myHand.setAttribute('src', 'assets/rock.png');     break;
+      case 1: myHand.setAttribute('src', 'assets/paper.png');    break;
+      case 2: myHand.setAttribute('src', 'assets/scissors.png'); break;
+    }
+    switch (oppChoice) {
+      case 0: oppHand.setAttribute('src', 'assets/rock.png');     break;
+      case 1: oppHand.setAttribute('src', 'assets/paper.png');    break;
+      case 2: oppHand.setAttribute('src', 'assets/scissors.png'); break;
+    }
+    throbber.style.display = 'none';
+    resolved.style.display = 'inline-block';
+  }
+  function tryAgain() {
+    resolved.style.display = 'none';
+    initial.style.display  = 'inline-block';
+    console.log('New round.');
+  }
+</script>
