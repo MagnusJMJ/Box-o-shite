@@ -2,6 +2,7 @@
 var myChoice,
     oppChoice,
     result,
+    hand     = ['rock.', 'paper.', 'scissors.'],
     initial  = document.getElementById('initialState'),
     rock     = document.getElementById('rock'),
     paper    = document.getElementById('paper'),
@@ -11,35 +12,21 @@ var myChoice,
     throbber = document.getElementById('throbber');
 
 // Linking functions to click events.
-rock.addEventListener('click', choseRock);
-paper.addEventListener('click', chosePaper);
-scissors.addEventListener('click', choseScissors);
+rock.addEventListener('click', function() { startGame(0); });     // NB: We have to put startGame()
+paper.addEventListener('click', function() { startGame(1); });    // in an anonymous function or the
+scissors.addEventListener('click', function() { startGame(2); }); // script goes batshit. Why? No idea.
 retry.addEventListener('click', tryAgain);
 
-/* Which function is called depends which button is
-pressed. The called function sets the player choice
-and initiates the game. */
-function choseRock() {
-  console.log('You chose rock.');
-  myChoice = 0;
-  startGame();
-}
-function chosePaper() {
-  console.log('You chose paper.');
-  myChoice = 1;
-  startGame();
-}
-function choseScissors() {
-  console.log('You chose scissors.');
-  myChoice = 2;
-  startGame();
-}
-
-/* startGame() actually just shows a throbber
-for a random duration between 1 and 2 seconds */
-function startGame() {
+/* startGame() sets the variable myChoice
+according to which button was pressed by
+the player and displays a throbber for 1
+to 2 seconds to create ~suspense~ */
+function startGame(input) {
   initial.style.display  = 'none';
   throbber.style.display = 'inline-block';
+
+  myChoice = input;
+  console.log('You chose ' + hand[myChoice]);
 
   var wait = 1000 + Math.random() * 1000
   setTimeout(resolve, wait);
@@ -49,10 +36,11 @@ function startGame() {
 "opponent" and decides who wins.
 (the result variable) */
 function resolve() {
-  oppChoice = Math.round(Math.random() * 2);
-  var oc = ['rock.', 'paper.', 'scissors.'];
-  console.log('Opponent chose ' + oc[oppChoice]);
+  // Choose opponent hand.
+  oppChoice = Math.floor(Math.random() * 3);
+  console.log('Opponent chose ' + hand[oppChoice]);
 
+  //Decides who won.
   if (myChoice == oppChoice) {
     console.log('You tied!');
     result = 2;
@@ -64,15 +52,19 @@ function resolve() {
     result = 0;
   }
 
+  // Moves on.
   showResult();
 }
 
 // Shows the result and what hands were chosen.
 function showResult() {
+  // More variables that refer to the DOM.
   var header  = document.getElementById('resolvedHeader'),
       myHand  = document.getElementById('myChoice'),
       oppHand = document.getElementById('oppChoice');
 
+  // This switch shows the appropriate header.
+  // The colours are default CSS colours.
   switch (result) {
     case 0:
       header.innerHTML   = 'You lost!';
@@ -88,18 +80,21 @@ function showResult() {
       break;
   }
 
+  // This switch shows which hand you picked.
   switch (myChoice) {
     case 0: myHand.setAttribute('src', 'assets/rock.png');     break;
     case 1: myHand.setAttribute('src', 'assets/paper.png');    break;
     case 2: myHand.setAttribute('src', 'assets/scissors.png'); break;
   }
 
+  // This switch shows which hand the opponent picked.
   switch (oppChoice) {
     case 0: oppHand.setAttribute('src', 'assets/rock.png');     break;
     case 1: oppHand.setAttribute('src', 'assets/paper.png');    break;
     case 2: oppHand.setAttribute('src', 'assets/scissors.png'); break;
   }
 
+  // Now that the result screen is 'ready', we'll show it.
   throbber.style.display = 'none';
   resolved.style.display = 'inline-block';
 }
