@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conway's Game of Life</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="libraries/p5.js"></script>
+    <script type="text/javascript">
+
+      var curGrid   = [],
+          nextGrid  = [],
+          cellWidth = 50;
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        frameRate(15);
+        noStroke();
+
+        for (x = 0; x < width/cellWidth; x++) {
+          curGrid[x] = [];
+          for (y = 0; y < height/cellWidth; y++) {
+            curGrid[x][y] = floor(random(2));
+          }
+        }
+
+        nextGrid = curGrid.slice();
+      }
+
+      function draw() {
+        background('White');
+
+        for (x = 1; x < curGrid.length-1; x++) {
+          for (y = 1; y < curGrid[x].length-1; y++) {
+
+            var neighbours = 0;
+            neighbours -= curGrid[x][y];
+
+            for (a = -1; a < 2; a++) {
+              for (b = -1; b < 2; b++) {
+                neighbours += curGrid[x+a][y+b];
+              }
+            }
+
+            if      ( curGrid[x][y] && neighbours >  2) { nextGrid[x][y] = 0; }
+            else if ( curGrid[x][y] && neighbours <  3) { nextGrid[x][y] = 0; }
+            else if (!curGrid[x][y] && neighbours == 3) { nextGrid[x][y] = 1; }
+            else                                        { nextGrid[x][y] = curGrid[x][y]; }
+
+            rect(x*cellWidth, y*cellWidth, cellWidth-0.5, cellWidth-0.5);
+
+            curGrid = nextGrid;
+          }
+        }
+      }
+    </script>
+  </head>
+</html>
