@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# BUGS:
+#  * Commands only work when repositories is set to 'all'
+
 startScreen()
 {
   cd ~/Documents/GitHub || echo "ERROR: You've either moved or deleted the GitHub folder."
