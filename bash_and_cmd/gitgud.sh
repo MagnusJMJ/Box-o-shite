@@ -1,13 +1,17 @@
 #!/bin/bash
 
+# TODO:
+#  * Implement repository initialization
+#  * Implement repository cloning
+
 # startup screen - all actions return to here when done
 startScreen()
 {
   cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
   clear
-  echo "****************************************"
-  echo "* Magnus' Mean Lean GitGud(tm) Machine *"
-  echo "****************************************"
+  echo "*********************************************"
+  echo "* Magnus' Mean Lean GitGud(tm) Machine v3.0 *"
+  echo "*********************************************"
   printf "\n"
 
   # lists subfolders (repositories) in the current folder
@@ -32,10 +36,10 @@ startScreen()
   handler $action $repo $msg
 }
 
+# hander function starts appropriate functions and returns to menu when they're done.
 handler()
 {
   clear
-
   # if you type 'all' as repository, will loop through all repositories performing the command
   if [ $2 == "all" ]; then
     for f in */; do
@@ -56,33 +60,29 @@ handler()
   startScreen
 }
 
+# Functions for each possible git command
 maker()
 {
   echo "UNIMPLEMENTED"
 }
-
 cloner()
 {
   echo "UNIMPLEMENTED"
 }
-
 pusher()
 {
   git add --all
   git commit -m "$2" || git commit -m "Placeholder."
   git push --all
 }
-
 puller()
 {
   git pull
 }
-
 checker()
 {
   git status
 }
-
 quit()
 {
   exit
