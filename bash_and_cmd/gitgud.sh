@@ -2,13 +2,12 @@
 
 # TODO:
 #  * Implement repository initialization
-#  * Implement repository cloning
 
 # startup screen - all actions return to here when done
 startScreen()
 {
   ## NB! Replace path here with the path to your local repository folder ##
-  cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
+  cd D:/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
 
   clear
   echo "*********************************************"
@@ -24,13 +23,13 @@ startScreen()
   printf "\n"
 
   # lists possible commands
-  echo "FUNCTIONS:"
-  for option in "maker (UNIMPLEMENTED)" "cloner (UNIMPLEMENTED)" "pusher" "puller" "checker" "quit"; do
+  echo "OPTIONS:"
+  for option in "make (UNIMPLEMENTED)" "clone" "push" "pull" "check" "quit"; do
     echo " * $option"
   done
   printf "\n"
 
-  echo "Commands go: [function] [repository] \"[message (for pushing)]\""
+  echo "Commands go: [option] [repository] \"[message (commits only)]\""
   printf "\n"
 
   #reads user input and sends it to the handler function
@@ -38,7 +37,7 @@ startScreen()
   handler $action $repo "$msg"
 }
 
-# hander function starts appropriate functions and returns to menu when they're done.
+# handler function starts appropriate functions and returns to menu when they're done.
 handler()
 {
   clear
@@ -62,26 +61,26 @@ handler()
   startScreen
 }
 
-# Functions for each possible git command
-maker()
+# Functions for each possible command
+make()
 {
   echo "UNIMPLEMENTED"
 }
-cloner()
+clone()
 {
-  echo "UNIMPLEMENTED"
+  git clone "$1" || echo "Invalid clone link!"
 }
-pusher()
+push()
 {
   git add --all
-  git commit -m $2 || git commit -m "No message specified."
+  git commit -m "$2" || git commit -m "No message specified."
   git push --all
 }
-puller()
+pull()
 {
   git pull
 }
-checker()
+check()
 {
   git status
 }
