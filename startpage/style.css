@@ -1,0 +1,30 @@
+* {
+  font-family: Open Sans, serif;
+  color: #DCD6D1;
+  text-align: center;
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body {
+  background-color: #7D7670;
+  margin-top: 30vh;
+}
+
+h1 {
+  font-size: 64;
+  transition: opacity .25s ease-in-out;
+}
+
+p {
+  font-size: 32;
+  transition: opacity .25s ease-in-out;
+}
+
+h1:hover, p:hover {
+  opacity: .75;
+}
