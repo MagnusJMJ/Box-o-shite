@@ -74,7 +74,7 @@ cloner()
 pusher()
 {
   git add --all
-  git commit -m "$2" || git commit -m "No message specified."
+  git commit -m $2 || git commit -m "No message specified."
   git push --all
 }
 puller()
