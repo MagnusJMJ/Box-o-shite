@@ -3,7 +3,6 @@
 # TODO:
 #  * Implement repository initialization
 #  * Implement repository cloning
-#  * Fix commit messages being cut off
 
 # startup screen - all actions return to here when done
 startScreen()
