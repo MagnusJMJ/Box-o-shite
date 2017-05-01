@@ -10,6 +10,7 @@ startScreen()
 {
   ## NB! Replace path here with the path to your local repository folder ##
   cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
+
   clear
   echo "*********************************************"
   echo "* Magnus' Mean Lean GitGud(tm) Machine v3.0 *"
@@ -35,7 +36,7 @@ startScreen()
 
   #reads user input and sends it to the handler function
   read -p "Type a command: " action repo msg
-  handler $action $repo $msg
+  handler $action $repo "$msg"
 }
 
 # hander function starts appropriate functions and returns to menu when they're done.
@@ -74,7 +75,7 @@ cloner()
 pusher()
 {
   git add --all
-  git commit -m "$2" || git commit -m "Placeholder."
+  git commit -m $2 || git commit -m "No message specified."
   git push --all
 }
 puller()
