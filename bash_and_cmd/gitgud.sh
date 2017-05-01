@@ -8,6 +8,7 @@
 # startup screen - all actions return to here when done
 startScreen()
 {
+  ## NB! Replace path here with the path to your local repository folder ##
   cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
   clear
   echo "*********************************************"
