@@ -1,2 +1,7 @@
-read message
-echo You typed: $message
+test()
+{
+  read message
+  echo $message
+  test
+}
+test

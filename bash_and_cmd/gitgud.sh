@@ -13,7 +13,7 @@ startScreen()
 
   clear
   echo "*********************************************"
-  echo "* Magnus' Mean Lean GitGud(tm) Machine v3.0 *"
+  echo "* Magnus' Mean Lean GitGud(tm) Machine v3.1 *"
   echo "*********************************************"
   printf "\n"
 
@@ -48,14 +48,14 @@ handler()
     for f in */; do
       echo $f
       cd $f
-      $1 $f $3
+      $1 $f "$3"
       cd ..
       printf "\n"
     done
   else
     echo $2
     cd $2 || ( read -t 5 -n 1 -p "Invalid repository! Returning to menu..." && startScreen )
-    $1 $2 $3
+    $1 $2 "$3"
     cd ..
     printf "\n"
   fi
@@ -75,7 +75,7 @@ cloner()
 pusher()
 {
   git add --all
-  git commit -m $2 || git commit -m "No message specified."
+  git commit -m "$2" || git commit -m "No message specified."
   git push --all
 }
 puller()
