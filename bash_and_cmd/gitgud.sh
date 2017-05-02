@@ -7,11 +7,11 @@
 startScreen()
 {
   ## NB! Replace path here with the path to your local repository folder ##
-  cd D:/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
+  cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
 
   clear
   echo "*********************************************"
-  echo "* Magnus' Mean Lean GitGud(tm) Machine v3.1 *"
+  echo "* Magnus' Mean Lean GitGud(tm) Machine v3.2 *"
   echo "*********************************************"
   printf "\n"
 
@@ -65,6 +65,7 @@ handler()
 make()
 {
   echo "UNIMPLEMENTED"
+  read -r -n 1 -p "Press any key to return to menu..."
 }
 clone()
 {
