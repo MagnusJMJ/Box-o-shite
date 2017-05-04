@@ -1,6 +1,8 @@
 * {
   font-family: Open Sans, Helvetica, sans-serif;
-  color: #DCD6D1;
+}
+
+*:not(.dropcontent) {
   animation: fadein 1s;
 }
 
@@ -9,19 +11,38 @@
   to   { opacity: 1; }
 }
 
-body {
-  background-color: #7D7670;
-  margin-top: 30vh;
-}
-
 h1 {
-  text-align: center;
+  font-size: 56px;
 }
 
-.sub {
+h2 {
+  font-size: 32px;
+}
+
+a  {
+  font-size: 14px;
+  transition: background-color 1s;
+}
+
+a:hover {
+  background-color: inherit;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  background-color: Crimson;
+}
+
+.dropcontent {
   display: none;
+  position: absolute;
 }
 
-.site:hover .sub {
+.dropcontent:hover {
+  background-color: inherit;
+}
+
+.dropdown:hover .dropcontent {
   display: block;
 }
