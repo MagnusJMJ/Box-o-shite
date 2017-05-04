@@ -2,11 +2,12 @@
 
 # TODO:
 #  * Implement repository initialization
+#  * Add color coded feedback
 
-# startup screen - all actions return to here when done
-startScreen()
+# Menu screen - all actions return to here when done.
+mainMenu()
 {
-  ## NB! Replace path here with the path to your local repository folder ##
+  ## NB! Replace path here with the path to your local Git repository folder ##
   cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
 
   clear
@@ -52,13 +53,13 @@ handler()
     done
   else
     echo $2
-    cd $2 || ( read -t 5 -n 1 -p "Invalid repository! Returning to menu..." && startScreen )
+    cd $2 || ( read -t5 -r -n1 -p "Invalid repository! Returning to menu..." && mainMenu )
     $1 $2 "$3"
     cd ..
     printf "\n"
   fi
-  read -r -n 1 -p "Action successfully performed! Press any key to return to menu..."
-  startScreen
+  read -r -n1 -p "Action successfully performed! Press any key to return to menu..."
+  mainMenu
 }
 
 # Functions for each possible command
@@ -69,12 +70,12 @@ make()
 }
 clone()
 {
-  git clone "$1" || echo "Invalid clone link!"
+  git clone "$1" || ( read -t5 -r -n1 -p "Invalid clone link! Returning to menu..." && mainMenu )
 }
 push()
 {
   git add --all
-  git commit -m "$2" || git commit -m "No message specified."
+  git commit -m "$2" || git commit -m "Did thing."
   git push --all
 }
 pull()
@@ -90,5 +91,5 @@ quit()
   exit
 }
 
-#Initializes startScreen
-startScreen
+#Initializes mainMenu
+mainMenu
