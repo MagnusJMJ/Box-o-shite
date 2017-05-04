@@ -1,7 +1,6 @@
 * {
-  font-family: Open Sans, serif;
+  font-family: Open Sans, Helvetica, sans-serif;
   color: #DCD6D1;
-  text-align: center;
   animation: fadein 1s;
 }
 
@@ -16,15 +15,13 @@ body {
 }
 
 h1 {
-  font-size: 64;
-  transition: opacity .25s ease-in-out;
+  text-align: center;
 }
 
-p {
-  font-size: 32;
-  transition: opacity .25s ease-in-out;
+.sub {
+  display: none;
 }
 
-h1:hover, p:hover {
-  opacity: .75;
+.site:hover .sub {
+  display: block;
 }
