@@ -70,7 +70,11 @@ make()
 }
 clone()
 {
-  git clone "$1" || ( read -t5 -r -n1 -p "Invalid clone link! Returning to menu..." && mainMenu )
+  if [ $1 == 'all' ]; then
+    echo "ERROR: Do not use 'all' as argument for clone!" && return
+  else
+    git clone "$1" || ( read -t5 -r -n1 -p "Invalid clone link! Returning to menu..." && mainMenu )
+  fi
 }
 push()
 {
