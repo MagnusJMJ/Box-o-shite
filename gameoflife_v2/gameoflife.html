@@ -6,51 +6,79 @@
     <script type="text/javascript" src="libraries/p5.js"></script>
     <script type="text/javascript">
 
+      // Variables!
       var curGrid   = [],
           nextGrid  = [],
-          cellWidth = 50;
+          cellWidth = 25;
 
       function setup() {
+        // Basic p5.js setup.
         createCanvas(windowWidth, windowHeight);
         frameRate(15);
         noStroke();
 
+        // Generation of a grid of cells.
         for (x = 0; x < width/cellWidth; x++) {
           curGrid[x] = [];
           for (y = 0; y < height/cellWidth; y++) {
-            curGrid[x][y] = floor(random(2));
+            curGrid[x][y] = 0;
           }
         }
 
+        // Copy of current grid, placeholder for next frame.
         nextGrid = curGrid.slice();
+
+        noLoop();
       }
 
       function draw() {
-        background('White');
+        background('DarkSlateGray');
 
         for (x = 1; x < curGrid.length-1; x++) {
           for (y = 1; y < curGrid[x].length-1; y++) {
 
+            // Make neighbour count and subtract current cell from own count.
             var neighbours = 0;
             neighbours -= curGrid[x][y];
 
+            // Count living neighbours of the current cell.
             for (a = -1; a < 2; a++) {
               for (b = -1; b < 2; b++) {
                 neighbours += curGrid[x+a][y+b];
               }
             }
 
-            if      ( curGrid[x][y] && neighbours >  2) { nextGrid[x][y] = 0; }
-            else if ( curGrid[x][y] && neighbours <  3) { nextGrid[x][y] = 0; }
-            else if (!curGrid[x][y] && neighbours == 3) { nextGrid[x][y] = 1; }
-            else                                        { nextGrid[x][y] = curGrid[x][y]; }
+            // R U L E C H E C K
+            if      ( curGrid[x][y] && neighbours <  2) { nextGrid[x][y] = 0; } // Extinction.
+            else if ( curGrid[x][y] && neighbours >  3) { nextGrid[x][y] = 0; } // Overpopulation.
+            else if (!curGrid[x][y] && neighbours == 3) { nextGrid[x][y] = 1; } // Birth.
+            else                                        { nextGrid[x][y] = curGrid[x][y]; } // Stasis.
 
+            if (curGrid[x][y]) {
+              fill(255, 255, 0);
+            } else {
+              fill(0);
+            }
             rect(x*cellWidth, y*cellWidth, cellWidth-0.5, cellWidth-0.5);
 
             curGrid = nextGrid;
           }
         }
       }
+
+      function mousePressed() {
+        if (curGrid[floor(winMouseX/cellWidth)][floor(winMouseY/cellWidth)]) {
+            curGrid[floor(winMouseX/cellWidth)][floor(winMouseY/cellWidth)] = 0;
+        } else {
+            curGrid[floor(winMouseX/cellWidth)][floor(winMouseY/cellWidth)] = 1;
+        }
+      }
+
+      function keyPressed() {
+        if (keyCode == 32) { redraw(); }
+      }
     </script>
   </head>
+  <body>
+  </body>
 </html>
