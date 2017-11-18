@@ -1,52 +1,101 @@
-<!DOCTYPE html>
+<!--
+I'm new, go easy...
+
+Give Credit were it's due, The_Bugs
+-->
 <html>
-  <head>
-    <title>Homepage</title>
-    <meta charset="utf-8">
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
-  </head>
-  <body>
-    <h1>Welcome.</h1>
-
-    <div class="dropdown">
-      <a href="http://www.4chan.org/" id="fc" class="droptab">4chan</a>
-      <div class="dropcontent">
-        <a href="https://www.4chan.org/b">/b/ - Random</a><br>
-        <a href="https://www.4chan.org/k">/k/ - Weapons</a><br>
-        <a href="https://www.4chan.org/g">/g/ - Technology</a><br>
-        <a href="https://www.4chan.org/vg">/vg/ - Vidya General</a><br>
-        <a href="https://www.4chan.org/wg">/wg/ - Wallpaper General</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <a href="https://www.reddit.com" id="rd" class="droptab">Reddit</a>
-      <div class="dropcontent">
-        <a href="https://www.reddit.com/r/GunPorn">r/Gunporn</a><br>
-        <a href="https://www.reddit.com/r/DesignPorn">r/DesignPorn</a><br>
-        <a href="https://www.reddit.com/r/ProgrammerHumor">r/ProgrammerHumor</a><br>
-        <a href="https://www.reddit.com/r/mildlyinteresting">r/mildlyinteresting</a><br>
-        <a href="https://www.reddit.com/r/TumblrInAction">r/TumblrInAction</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <a href="https://www.facebook.com" id="fb" class="droptab">Facebook</a>
-      <div class="dropcontent">
-        <a href="https://www.facebook.com/messages/">Messages</a><br>
-        <a href="https://www.facebook.com/profile.php">Profile</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <a href="https://www.youtube.com" id="yt" class="droptab">Youtube</a>
-      <div class="dropcontent">
-        <a href="https://www.youtube.com/channel/UCt7fwAhXDy3oNFTAzF2o8Pw">theneedledrop</a><br>
-        <a href="https://www.youtube.com/channel/UCrfKGpvbEQXcbe68dzXgJuA">Forgotten Weapons</a><br>
-        <a href="https://www.youtube.com/channel/UCO1ITICo8MLHGAXR1uzFwjA">OneyPlays</a><br>
-        <a href="https://www.youtube.com/channel/UCl2mFZoRqjw_ELax4Yisf6w">Louis Rossman</a>
-      </div>
-    </div>
-  </body>
+	<head>
+		<title>home</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="search">
+			<form action="javascript:search()">
+				<input id="search" value="" placeholder="Search..." type="input" spellcheck="false" autofocus/>
+			</form>
+		</div>
+		<div class="container">
+					<div class="button-1">
+						<p>watch</p>
+						<div class="menu-1">
+							<a href="https://www.youtube.com/">youtube</a><br><br>
+							<a href="https://www.netflix.com">netflix</a><br><br>
+							<a href="http://www.twitch.tv/">twitch</a><br><br>
+							<a href="https://www.dr.dk/tv/live/dr2">dr2</a><br><br>
+							<a href="https://www.moodica.com">moodica</a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+						</div>
+					</div>
+					<div class="button-2">
+						<p>listen</p>
+						<div class="menu-2">
+							<a href="https://open.spotify.com/browse">spotify</a><br><br>
+							<a href="http://www.dr.dk/radio/live/p8jazz/">p8 jazz</a><br><br>
+							<a href="http://99percentinvisible.org/">99%invisible</a><br><br>
+							<a href="https://mynoise.net/">mynoise</a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+						</div>
+					</div>
+					<div class="button-3">
+						<p>read</p>
+						<div class="menu-3">
+							<a href="https://www.mail.google.com">gmail</a><br><br>
+							<a href="https://facebook.com">facebook</a><br><br>
+							<a href="https://reddit.com">reddit</a><br><br>
+							<a href="https://4chan.org">4chan</a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+						</div>
+					</div>
+					<div class="button-4">
+						<p>work</p>
+						<div class="menu-4">
+							<a href="https://bb.au.dk">blackboard</a><br><br>
+							<a href="https://sbstads.au.dk/sb_STAP/sb/common/velkommen.jsp">stads</a><br><br>
+							<a href="https://teamup.com/ksajebyfngphehrvvf">akvariet</a><br><br>
+							<a href="https://teamup.com/ksaoksap5dd29vbcdu">lasercutter</a><br><br>
+							<a href="https://drive.google.com">drive</a><br><br>
+							<a href="https://www.dropbox.com">dropbox</a><br><br>
+							<a href="https://github.com"></a>github<br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+							<a href="#"></a><br><br>
+						</div>
+					</div>
+					<div class="button-5">
+						<p>use</p>
+						<div class="menu-5">
+							<a href="http://www.rejseplanen.dk/">rejseplanen</a><br><br>
+							<a href="http://www.speedtest.net/">speedtest</a><br><br>
+							<a href="http://www.wolframalpha.com/">wolfram alpha</a><br><br>
+							<a href="http://ordbog.gyldendal.dk/">den røde ordbog</a><br><br>
+							<a href="http://www.dictionary.com">dictionary.com</a><br><br>
+							<a href="http://platowebdesign.com/timer/">plato timer</a><br><br>
+							<a href="https://userstyles.org/">userstyles</a><br><br>
+							<a href="https://savetomp3.com/">yt->mp3</a><br><br>
+							<a href="https://coolors.co/">coolors</a><br><br>
+							<a href="#"></a><br><br>
+						</div>
+					</div>
+		</div>
+		<script>
+			function search(){
+				var query = document.getElementById('search').value;
+				window.location = 'https://www.google.com/#q=' + query;
+			}
+		</script>
+	</body>
 </html>
