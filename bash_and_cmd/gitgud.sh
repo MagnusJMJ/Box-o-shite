@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# While technically unimpressive, I have chosen to append this little bash script
+# to my application for the Natl. Museum. I called Andreas Nauta Pedersen about
+# the job, asking him what was most important in submitting previous work. Design?
+# Technical capability? Andreas' wholesome answer was that I should submit what I
+# was most proud of, which is definitely this script. As a complete newcomer to
+# programming, I was given a quite poor introduction to Git and GitHub. I found it
+# tedious to use the terminal, so I wrote a bash script to ease the workflow. It is
+# not just my first foray into programming that wasn't on my course curriculum - it
+# was the first time I observed a problem, and programmed my way out of it.
+# What a rush!
+
 # TODO:
 #  * Implement repository initialization
 #  * Add color coded feedback
@@ -7,13 +18,13 @@
 # Menu screen - all actions return to here when done.
 mainMenu()
 {
-  ## NB! Replace path here with the path to your local Git repository folder ##
+  # NB! Replace path here with the path to your local Git repository folder
   cd ~/Documents/GitHub || ( echo "ERROR: You've either moved or deleted the GitHub folder. Correct the path in the script." && exit )
 
   clear
-  echo "*********************************************"
-  echo "* Magnus' Mean Lean GitGud(tm) Machine v3.2 *"
-  echo "*********************************************"
+  echo "******************************************"
+  echo "* Your Friendly Neighbourhood Git Helper *"
+  echo "******************************************"
   printf "\n"
 
   # lists subfolders (repositories) in the current folder
